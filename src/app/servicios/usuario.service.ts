@@ -10,7 +10,7 @@ import { Partido } from '../modelos/partidos';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private url = "http://localhost:3000"
+  private url = "https://backend-cpt-production.up.railway.app"
   private http = inject(HttpClient)
   
   //validar usuario
