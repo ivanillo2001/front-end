@@ -1,0 +1,28 @@
+<div *ngIf="validar_lenguage()=='spanish'||validar_lenguage()==null" class="row" id="formDivision">
+    <h3>DIVISION PARA VER HISTORIAL DE PARTIDOS</h3>
+    <form [formGroup]="divisionForm" (ngSubmit)="buscarPartidos()">
+        <div class="form-group col-md-6">
+            <select class="form-control" id="divisionSelect" formControlName="division">
+            <option value="1">Primera División</option>
+            <option value="2">Segunda División</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Cargar</button>
+    </form>
+</div>
+
+<div *ngIf="validar_lenguage()=='english'" class="row" id="formDivision">
+    <h3>DIVISION TO SEE MATCH'S HISTORY</h3>
+    <form [formGroup]="divisionForm" (ngSubmit)="buscarPartidos()">
+        <div class="form-group col-md-6">
+            <select class="form-control" id="divisionSelect" formControlName="division">
+            <option value="1">First Division</option>
+            <option value="2">Second Division</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Load</button>
+    </form>
+</div>
+
+<div class="row" id="zonaPartidos">
+</div>

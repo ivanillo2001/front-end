@@ -1,0 +1,34 @@
+<div *ngIf="validar_lenguage()=='spanish'||validar_lenguage()==null" id="contenido_spanish">
+  <div [formGroup]="frm" id="formulario">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Usuario</label>
+      <input type="text" class="form-control" id="username" placeholder="Introduce usuario" formControlName="username">
+      <span *ngIf="formEnviado && frm.get('username')?.errors?.['required']">Campo requerido</span>
+    </div>
+    <div class="form-group mt-3">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" id="password" placeholder="Contraseña" formControlName="password">
+      <span *ngIf="formEnviado && frm.get('password')?.errors?.['required']">Campo requerido</span>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary m-3" (click)="validarDatos()">Iniciar Sesión</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="validar_lenguage()=='english'" id="contenido_spanish">
+  <div [formGroup]="frm" id="formulario">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username">
+      <span *ngIf="formEnviado && frm.get('username')?.errors?.['required']">Campo requerido</span>
+    </div>
+    <div class="form-group mt-3">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+      <span *ngIf="formEnviado && frm.get('password')?.errors?.['required']">Campo requerido</span>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary m-3" (click)="validarDatos()">Log In</button>
+    </div>
+  </div>
+</div>

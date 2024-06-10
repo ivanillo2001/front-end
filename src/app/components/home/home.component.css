@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "san-diego";
+    src: url('../../../assets/NFL_San_Diego_Chargers.ttf') format('truetype');
+}
+
+#inicio{
+    background-image: url("../../../assets/imagen/foto.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+hr{
+    height: 10px; /* Cambia el valor para ajustar el grosor */
+    background-color: black; /* Color de la línea */
+}
+#titulo {
+    margin: 0;
+    font-family: 'san-diego';
+    font-size: 50px;
+}
+#descripcion{
+    font-size: 25px;
+}
+#directivos{
+    font-family: 'san-diego';
+    font-size: 85px;
+    color: white;
+}
+#zona_directivo{
+    border: 1px solid black;
+    height: 20vh;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    background-image: url('../../../assets/imagen/fondo_directores.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#texto_bienvenida{
+    margin-top: 10vh;
+    font-family: 'san-diego';
+    font-size: 50px;
+}
+#imagenPortada{
+    max-width: 75%; /* La imagen nunca será más grande que su contenedor */
+    height: auto;
+    max-height: 450px; /* La altura se ajustará automáticamente para mantener la proporción de aspecto */
+    justify-content: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 25px;
+}
+
+h2{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+}
+.imagen-con-hover {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.imagen-responsive {
+    width: 55%;
+    height: auto;
+    display: block;
+}
+
+.texto-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    color: black;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 25px;
+}
+
+.imagen-con-hover:hover .texto-hover {
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .texto-hover {
+        position: static;
+        transform: none;
+        opacity: 1;
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+    }
+}
+
+.organizadores{
+    text-align: center;
+}

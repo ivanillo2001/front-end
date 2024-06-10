@@ -1,0 +1,81 @@
+<div *ngIf="validar_lenguage()=='spanish'||validar_lenguage()==null">
+  <h1>Crear Nueva Pareja</h1>
+<div id="formulario" class="row">
+  <p>Por favor, indique a qué división pertenece esta nueva pareja.</p>
+  <form [formGroup]="divisionForm" (ngSubmit)="buscarJugadores()">
+    <div class="form-group col-12 col-md-6">
+      <select class="form-control" id="divisionSelect" formControlName="division">
+        <option value="1">Primera División</option>
+        <option value="2">Segunda División</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Cargar</button>
+  </form>
+</div>
+
+<div id="zonaJugadores" class="row d-none">
+  <h3>Seleccione Jugadores:</h3>
+  <form [formGroup]="parejaForm" (ngSubmit)="actualizarParejas()" class="col-12 col-md-6">
+    <div class="form-group">
+      <label for="jugador1">Jugador 1:</label>
+      <select class="form-control selJugadores" id="jugador1" formControlName="jugador1" #jugador1Select>
+        <option value="0">Seleccione un jugador</option>
+        <option *ngFor="let jugador of jugadores" [value]="jugador.idJugador">
+          {{ jugador.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group mt-3">
+      <label for="jugador2">Jugador 2:</label>
+      <select class="form-control selJugadores" id="jugador2" formControlName="jugador2" #jugador2Select>
+        <option value="0">Seleccione un jugador</option>
+        <option *ngFor="let jugador of jugadores" [value]="jugador.idJugador">
+          {{ jugador.nombre }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Crear Pareja</button>
+  </form>
+  </div>
+</div>
+
+<div *ngIf="validar_lenguage()=='english'">
+  <h1>Create a new Couple</h1>
+<div id="formulario" class="row">
+  <p>Type the division</p>
+  <form [formGroup]="divisionForm" (ngSubmit)="buscarJugadores()">
+    <div class="form-group col-12 col-md-6">
+      <select class="form-control" id="divisionSelect" formControlName="division">
+        <option value="1">First Division</option>
+        <option value="2">Second Division</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Cargar</button>
+  </form>
+</div>
+
+<div id="zonaJugadores" class="row d-none">
+  <h3>Choose the players:</h3>
+  <form [formGroup]="parejaForm" (ngSubmit)="actualizarParejas()" class="col-12 col-md-6">
+    <div class="form-group">
+      <label for="jugador1">Player 1:</label>
+      <select class="form-control selJugadores" id="jugador1" formControlName="jugador1" #jugador1Select>
+        <option value="0">Choose the player</option>
+        <option *ngFor="let jugador of jugadores" [value]="jugador.idJugador">
+          {{ jugador.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group mt-3">
+      <label for="jugador2">Player 2:</label>
+      <select class="form-control selJugadores" id="jugador2" formControlName="jugador2" #jugador2Select>
+        <option value="0">Choose the player</option>
+        <option *ngFor="let jugador of jugadores" [value]="jugador.idJugador">
+          {{ jugador.nombre }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Create Couple</button>
+  </form>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "san-diego";
+    src: url('../../../assets/NFL_San_Diego_Chargers.ttf') format('truetype');
+}
+h1{
+    margin-top: 7vh;
+    font-family: 'san-diego';
+    font-size: 75px;
+}
+h3{
+    margin-top: 7vh;
+    font-family: 'san-diego';
+    font-size: 55px;
+}
+p{
+    font-size: 20px;
+}

@@ -1,0 +1,64 @@
+<div *ngIf="validarSesionIniciada() && validar_lenguage()=='spanish'" id="contenido">
+    <h1>Crear jugador</h1>
+    <form [formGroup]="jugadorForm" (ngSubmit)="crearJugador()">
+        <div class="form-group mt-4">
+          <label for="nombreJugador">Nombre del jugador</label>
+          <input type="text" class="form-control" id="nombreJugador" formControlName="nombre">
+          <small *ngIf="jugadorForm.get('nombre')?.errors?.['required']" id="errorNombre">Campo obligatorio*</small>
+        </div>
+        <div class="form-group mt-4">
+          <label for="puntosJugador">Puntos del jugador</label>
+          <input type="number" class="form-control" id="puntosJugador" formControlName="puntos">
+          <small *ngIf="jugadorForm.get('puntos')?.errors?.['required']" id="errorPuntuacion">Campo obligatorio*</small>
+        </div>
+        <div class="form-group mt-4">
+            <label for="divisiones">División del jugador</label>
+            <select class="form-control" id="divisiones" formControlName="division">
+            </select>
+        </div>
+        <div class="form-group mt-4">
+          <label for="usuario">Usuario del jugador</label>
+          <input type="text" class="form-control" id="usuario" formControlName="usuario">
+          <small *ngIf="jugadorForm.get('usuario')?.errors?.['required']" id="errorUsuario">Campo obligatorio*</small>
+        </div>
+        <div class="form-group mt-4">
+          <label for="usuario">Contraseña</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <small *ngIf="jugadorForm.get('password')?.errors?.['required']" id="errorPassword">Campo obligatorio*</small>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Crear Jugador</button>
+      </form>
+</div>
+<div *ngIf="validarSesionIniciada() && validar_lenguage()=='english'" id="contenido">
+  <h1>Create Player</h1>
+  <form [formGroup]="jugadorForm" (ngSubmit)="crearJugador()">
+      <div class="form-group mt-4">
+        <label for="nombreJugador">Player's name</label>
+        <input type="text" class="form-control" id="nombreJugador" formControlName="nombre">
+        <small *ngIf="jugadorForm.get('nombre')?.errors?.['required']" id="errorNombre">Required*</small>
+      </div>
+      <div class="form-group mt-4">
+        <label for="puntosJugador">Player's points</label>
+        <input type="number" class="form-control" id="puntosJugador" formControlName="puntos">
+        <small *ngIf="jugadorForm.get('puntos')?.errors?.['required']" id="errorPuntuacion">Required*</small>
+      </div>
+      <div class="form-group mt-4">
+          <label for="divisiones">Player's division</label>
+          <select class="form-control" id="divisiones" formControlName="division">
+          </select>
+      </div>
+      <div class="form-group mt-4">
+        <label for="usuario">Username</label>
+        <input type="text" class="form-control" id="usuario" formControlName="usuario">
+        <small *ngIf="jugadorForm.get('usuario')?.errors?.['required']" id="errorUsuario">Required*</small>
+      </div>
+      <div class="form-group mt-4">
+        <label for="usuario">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <small *ngIf="jugadorForm.get('password')?.errors?.['required']" id="errorPassword">Required*</small>
+      </div>
+      <button type="submit" class="btn btn-primary mt-4">Create player</button>
+    </form>
+</div>
+
+<a *ngIf="!validarSesionIniciada()" href="/login">Inicia sesión para poder acceder</a>

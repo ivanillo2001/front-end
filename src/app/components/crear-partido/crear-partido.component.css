@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "san-diego";
+    src: url('../../../assets/NFL_San_Diego_Chargers.ttf') format('truetype');
+}
+h1{
+    font-family: 'san-diego';
+    font-size: 55px;
+    padding-top: 15px;
+}
+select, input{
+    font-size: 20px;
+}
+form{
+    padding-bottom: 5vh;
+}

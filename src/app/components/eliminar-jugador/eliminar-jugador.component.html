@@ -1,0 +1,43 @@
+<div *ngIf="validar_lenguage()=='spanish'||validar_lenguage()==null" id="contenido_spanish">
+  <h1>Eliminar Jugador</h1>
+  <p>A continuación, escribe el nombre del jugador al que quieres eliminar.</p><br>
+  <form [formGroup]="jugadorForm" (ngSubmit)="buscarJugador()">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="nombreJugador" id="nombreJugador" placeholder="Nombre del jugador">
+      <small *ngIf="jugadorForm.get('nombreJugador')?.errors?.['required']" id="errorNombre">Campo obligatorio</small>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Buscar Jugador</button>
+  </form>
+
+  <div id="datosJugador" class="d-none">
+    <h2>Nombre del jugador:</h2>
+    <h3 id="name"></h3>
+    <h2>Puntos del jugador:</h2>
+    <h3 id="puntos"></h3>
+    <form (click)="eliminarJugador()">
+      <button type="button" class="btn btn-outline-danger">Eliminar</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="validar_lenguage()=='english'" id="contenido_english">
+  <h1>Remove Player</h1>
+  <p>Type the player's name to delete</p><br>
+<form [formGroup]="jugadorForm" (ngSubmit)="buscarJugador()">
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="nombreJugador" id="nombreJugador" placeholder="Player's name">
+    <small *ngIf="jugadorForm.get('nombreJugador')?.errors?.['required']" id="errorNombre">Required</small>
+  </div>
+  <button type="submit" class="btn btn-outline-primary mt-2">Search player</button>
+</form>
+
+<div id="datosJugador" class="d-none">
+  <h2>Player's name:</h2>
+  <h3 id="name"></h3>
+  <h2>Player's points:</h2>
+  <h3 id="puntos"></h3>
+  <form (click)="eliminarJugador()">
+    <button type="button" class="btn btn-outline-danger">Delete</button>
+  </form>
+</div>
+</div>
