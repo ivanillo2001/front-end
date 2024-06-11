@@ -1,4 +1,4 @@
-<div *ngIf="validarSesionIniciada() && validar_lenguage()=='spanish'" id="contenido">
+<div *ngIf="validarSesionIniciada() && validar_lenguage()=='spanish'||validar_lenguage()==null" id="contenido">
     <h1>Crear jugador</h1>
     <form [formGroup]="jugadorForm" (ngSubmit)="crearJugador()">
         <div class="form-group mt-4">
