@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../../servicios/usuario.service';
 import Swal from 'sweetalert2';
 import { CookieService } from '../../servicios/cookie-service.service';
+import { min } from 'rxjs';
 
 @Component({
 	selector: 'app-editar-jugador',
@@ -26,7 +27,7 @@ export class EditarJugadorComponent implements OnInit{
     });
 		this.editarForm = this.formBuilder.group({
 			nombre_jugador:['',[Validators.required]],
-			puntos_jugador:['',[Validators.required]],
+			puntos_jugador:['',[Validators.required, Validators.min(0)]],
 			division_jugador:['',[Validators.required]],
 			rol_jugador:['',[Validators.required]],
 		})
