@@ -12,11 +12,19 @@ export class AyudaComponent implements OnInit{
   cookie_service = inject(CookieService)
   ngOnInit(): void {
     this.validar_lenguage()
+    this.validar_rol()
   }
 
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     return lenguage
+  }
+
+  validar_rol(){
+    let rol = this.cookie_service.getCookie('rol')
+    if (rol == 'jugador'|| rol =='admin') {
+      return rol
+    }else return 'invitado'
   }
 
 }
