@@ -113,7 +113,8 @@ export class EditarJugadorComponent implements OnInit{
     } else {
       Swal.fire({
         icon: "error",
-        title: "Rellene el formulario",
+        title: "Rellene el formulario correctamente.",
+        text:"Verifique si hay algún valor inadecuado",
         showConfirmButton: false,
         timer: 1500
       });
