@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CookieService } from '../../servicios/cookie-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink,RouterLinkActive, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -14,14 +15,14 @@ export class HomeComponent implements OnInit{
   cookie!:string
   cookieService = inject(CookieService)
   ngOnInit(): void {
-    this.verificarCookie()
+    this.validarIdioma()
   }
-  verificarCookie(){
-    this.cookie = this.cookieService.getCookie('language')
-    if (this.cookie=='spanish') {
-      document.querySelector("#contenido_english")?.classList.add("d-none")
+  validarIdioma(){
+    let lenguage = this.cookieService.getCookie('language')
+    if (lenguage=='spanish'||lenguage=='english'){
+      return lenguage
     }else{
-      document.querySelector("#contenido_espanol")?.classList.add("d-none")
-    }
+        return null
+      }
   }
 }

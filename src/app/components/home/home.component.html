@@ -11,7 +11,7 @@
 
 
 
-<div id="contenido_espanol" class="mt-4 text-center">
+<div *ngIf="validarIdioma()=='spanish'||validarIdioma()==null" id="contenido_espanol" class="mt-4 text-center">
     <p id="texto_bienvenida">Bienvenidos</p>
     <p id="descripcion">A la mejor liga de pádel de Córdoba</p>
     <div id="zona_directivo">
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div id="contenido_english" class="mt-4 text-center">
+<div *ngIf="validarIdioma()=='english'" id="contenido_english" class="mt-4 text-center">
     <p id="texto_bienvenida">WELCOME</p>
     <p id="descripcion">To the best padel league in Cordoba</p>
     <div id="zona_directivo">

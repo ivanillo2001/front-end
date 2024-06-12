@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Jugador } from '../../modelos/jugador';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { CookieService } from '../../servicios/cookie-service.service';
@@ -8,7 +8,7 @@ import { CookieService } from '../../servicios/cookie-service.service';
 @Component({
   selector: 'app-segunda-division',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './segunda-division.component.html',
   styleUrl: './segunda-division.component.css'
 })
@@ -24,13 +24,14 @@ export class SegundaDivisionComponent implements OnInit{
   }
 
   validarIdioma(){
-    this.language= this.cookieServices.getCookie('language')
-    if (this.language=='spanish') {
-      document.querySelector("#titulo_english")?.classList.add("d-none")
+    let lenguage = this.cookieServices.getCookie('language')
+    if (lenguage=='spanish'||lenguage=='english'){
+      this.language = lenguage
+      return lenguage
     }else{
-      document.querySelector("#titulo_espanol")?.classList.add("d-none")
-
-    }
+        this.language= 'indefinido'
+        return null
+      }
   }
 
   cargarJugadores(){
@@ -42,7 +43,7 @@ export class SegundaDivisionComponent implements OnInit{
           nombre.textContent = jugador.nombre;
           zonaJugadores.append(nombre);
           const puntos = document.createElement("h3");
-          if (this.language=='spanish') {
+          if (this.language=='spanish'||this.language=='indefinido') {
             puntos.textContent = jugador.puntos.toString() +' puntos'
           }else{
           puntos.textContent = jugador.puntos.toString() +' points'

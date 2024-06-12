@@ -2,10 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { Jugador } from '../../modelos/jugador';
 import { CookieService } from '../../servicios/cookie-service.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-primera-division',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './primera-division.component.html',
   styleUrl: './primera-division.component.css'
 })
@@ -19,13 +20,14 @@ export class PrimeraDivisionComponent implements OnInit{
   }
 
   validarIdioma(){
-    this.language= this.cookieServices.getCookie('language')
-    if (this.language=='spanish') {
-      document.querySelector("#titulo_english")?.classList.add("d-none")
+    let lenguage = this.cookieServices.getCookie('language')
+    if (lenguage=='spanish'||lenguage=='english'){
+      this.language = lenguage
+      return lenguage
     }else{
-      document.querySelector("#titulo_espanol")?.classList.add("d-none")
-
-    }
+        this.language= 'indefinido'
+        return null
+      }
   }
 
   cargarJugadores(){
@@ -37,7 +39,7 @@ export class PrimeraDivisionComponent implements OnInit{
           nombre.textContent = jugador.nombre;
           zonaJugadores.append(nombre);
           const puntos = document.createElement("h3");
-          if (this.language=='spanish') {
+          if (this.language=='spanish'||this.language=='indefinido') {
             puntos.textContent = jugador.puntos.toString() +' puntos'
           }else{
           puntos.textContent = jugador.puntos.toString() +' points'
