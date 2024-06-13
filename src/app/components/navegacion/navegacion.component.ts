@@ -19,6 +19,12 @@ export class NavegacionComponent implements OnInit {
     this.activarBotones()
     this.validar_lenguage()
   }
+
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookieService.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -27,6 +33,10 @@ export class NavegacionComponent implements OnInit {
       return null
     }
   }
+  /**
+   * @description Función encargada de darle funcionalidad a los botones de los idiomas
+   * para cambiar el contenido de la página
+   */
   activarBotones() {
     let banderaSpain = document.querySelector("#banderaEspaña") as HTMLImageElement;
     banderaSpain?.addEventListener("click", () => {

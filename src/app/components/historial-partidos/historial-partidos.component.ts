@@ -26,6 +26,11 @@ export class HistorialPartidosComponent implements OnInit{
   ngOnInit(): void {
     this.validar_lenguage()
   }
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -34,6 +39,9 @@ export class HistorialPartidosComponent implements OnInit{
       return null
     }
   }
+  /**
+   * @description Función encargada de mostrar los partidos que hay una división indicada
+   */
   buscarPartidos() {
     const zonaPartidos = document.getElementById('zonaPartidos');
     if (zonaPartidos) {
@@ -68,7 +76,16 @@ export class HistorialPartidosComponent implements OnInit{
       },
     );
   }
-
+/**
+ * @description Función encargada de mostrar los partidos en la página.
+ * @param jugador1 
+ * @param jugador2 
+ * @param jugador3 
+ * @param jugador4 
+ * @param set1 
+ * @param set2 
+ * @param set3 
+ */
   agregarPartidoPagina(jugador1:string,jugador2:string,jugador3:string,jugador4:string,set1:string,set2:string,set3:string){
      // Obtener el contenedor principal donde se agregarán los partidos
   const zonaPartidos = document.getElementById('zonaPartidos');

@@ -26,6 +26,11 @@ export class EliminarJugadorComponent implements OnInit{
   ngOnInit(): void {
     this.validar_lenguage()
   }
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -34,6 +39,10 @@ export class EliminarJugadorComponent implements OnInit{
       return null
     }
   }
+  /**
+   * @description Función encargada de buscar el jugador que se quiere eliminar. Si no se encuentra da error,
+   * al igual que si no se rellena el formulario
+   */
   buscarJugador() {
     if (this.jugadorForm.valid) {
       const nombre = this.jugadorForm.get('nombreJugador')!.value;
@@ -61,8 +70,19 @@ export class EliminarJugadorComponent implements OnInit{
           alert('Hubo un error al obtener el jugador.');
         }
       });
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Debe rellenar el formulario",
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   }
+  /**
+   * @description Función encargada de eliminar el jugador de la bbdd. Al eliminar un jugador, automáticamente
+   * también se elimina la pareja en la que estaba.
+   */
   eliminarJugador() {
     // Llama al servicio para eliminar el jugador
     this.serviciosJugador.eliminarJugador(this.idJugador).subscribe( 

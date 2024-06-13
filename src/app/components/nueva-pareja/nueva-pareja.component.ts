@@ -34,7 +34,11 @@ export class NuevaParejaComponent implements OnInit{
   ngOnInit(): void {
     this.validar_lenguage()
   }
-
+/**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -44,6 +48,10 @@ export class NuevaParejaComponent implements OnInit{
     }
   }
 
+  /**
+   * @description Función encargada de mostrar los jugadores de cada división
+   * según la división elegida
+   */
   buscarJugadores() {
     let zonaJugadores = document.querySelector('#zonaJugadores');
     zonaJugadores?.classList.remove('d-none');
@@ -65,6 +73,10 @@ export class NuevaParejaComponent implements OnInit{
     }
   }
 
+  /**
+   * @description Función encargada de llamar al servicio de modificar pareja. Lo que hace ese servicio es setear el id
+   * de pareja de un jugador con su pareja correspondiente
+   */
   actualizarParejas() {
     const jugador1SelectElement = this.jugador1Select.nativeElement;
     const jugador2SelectElement = this.jugador2Select.nativeElement;
@@ -84,7 +96,13 @@ export class NuevaParejaComponent implements OnInit{
     this.crearPareja(idJugador1,idJugador2, nombre_jugador1, nombre_jugador2);
   }
 
-
+  /**
+   * @description Función encargada de insertar la nueva pareja en la bbdd llamando al servicio
+   * @param idJugador1 
+   * @param idJugador2 
+   * @param nombre_jugador1 
+   * @param nombre_jugador2 
+   */
   crearPareja(idJugador1:number,idJugador2:number, nombre_jugador1:string,nombre_jugador2:string){
     this.serviciosJugadores.crearPareja(idJugador1,idJugador2,this.division, nombre_jugador1,nombre_jugador2).subscribe(
       (result)=>{

@@ -29,6 +29,11 @@ export class LoginComponent implements OnInit{
     this.validar_lenguage()
   }
 
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookieService.getCookie('language')
     if (lenguage=='spanish'||lenguage=='english'){
@@ -36,6 +41,10 @@ export class LoginComponent implements OnInit{
     }else return null
   }
 
+  /**
+   * @description Función encargada de validar los datos del usuario que inicia sesión.
+   * También crea el rol segun el usuario que haya iniciado sesión
+   */
   validarDatos() {
     this.formEnviado = true;
     if (this.frm.valid) {

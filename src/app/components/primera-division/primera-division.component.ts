@@ -19,6 +19,11 @@ export class PrimeraDivisionComponent implements OnInit{
     this.validarIdioma();
   }
 
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validarIdioma(){
     let lenguage = this.cookieServices.getCookie('language')
     if (lenguage=='spanish'||lenguage=='english'){
@@ -29,7 +34,9 @@ export class PrimeraDivisionComponent implements OnInit{
         return null
       }
   }
-
+  /**
+   * @description Función encargada de cargar los jugadores de la division
+   */
   cargarJugadores(){
     this.servicio.jugadoresPrimera().subscribe(
       (jugadores:Jugador[])=>{

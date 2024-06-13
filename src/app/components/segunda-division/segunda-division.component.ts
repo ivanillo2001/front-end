@@ -23,6 +23,11 @@ export class SegundaDivisionComponent implements OnInit{
 
   }
 
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validarIdioma(){
     let lenguage = this.cookieServices.getCookie('language')
     if (lenguage=='spanish'||lenguage=='english'){
@@ -33,7 +38,9 @@ export class SegundaDivisionComponent implements OnInit{
         return null
       }
   }
-
+  /**
+   * @description Función encargada de cargar los jugadores de la division
+   */
   cargarJugadores(){
     this.servicio.jugadoresSegunda().subscribe(
       (jugadores:Jugador[])=>{

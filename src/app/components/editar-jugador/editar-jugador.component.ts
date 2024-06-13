@@ -35,6 +35,12 @@ export class EditarJugadorComponent implements OnInit{
   ngOnInit(): void {
     this.validar_lenguage()
   }
+
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -44,6 +50,10 @@ export class EditarJugadorComponent implements OnInit{
     }
   }
 
+  /**
+   * @description Función encargada de buscar el jugador que se quiere editar.
+   * Si no se encuentra sale mensaje de error
+   */
 	buscarJugador(){
 		if (this.jugadorForm.valid) {
       const nombre = this.jugadorForm.get('nombreJugador')!.value;
@@ -84,6 +94,11 @@ export class EditarJugadorComponent implements OnInit{
     }
 	}
 
+  /**
+   * @description Función encargada de guardar los cambios de edición en la bbdd.
+   * Recibe el jugador y carga el formulario de edición. Si hay algún fallo da error
+   * al mandar el formulario
+   */
   editarJugador() {
     if (this.editarForm.valid) {
       let nombre = this.editarForm.get('nombre_jugador')!.value;

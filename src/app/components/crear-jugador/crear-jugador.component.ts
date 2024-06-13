@@ -16,7 +16,7 @@ export class CrearJugadorComponent implements OnInit{
   constructor(private formBuilder: FormBuilder) {
     this.jugadorForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
-      puntos: ['', [Validators.required]],
+      puntos: ['', [Validators.required, Validators.min(0)]],
       division: ['1',[ Validators.required]],
       usuario: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -30,6 +30,11 @@ export class CrearJugadorComponent implements OnInit{
     this.validar_lenguage()
 
   }
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookieService.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -39,6 +44,10 @@ export class CrearJugadorComponent implements OnInit{
     }
   }
 
+  /**
+   * @description Función encargada de validar si la sesión está iniciada o no
+   * @returns true or false
+   */
   validarSesionIniciada(){
     let sesionIniciada= false
     if (this.cookieService.cookieExists('rol')) {
@@ -47,6 +56,9 @@ export class CrearJugadorComponent implements OnInit{
     return sesionIniciada
   }
 
+  /**
+   * @description Función encargada de obtener las divisiones que hay en la bbdd
+   */
   cargarDivisiones() {
     this.servicioUsuarios.obtenerDivisiones().subscribe(
         (divisiones: any[]) => {
@@ -65,6 +77,10 @@ export class CrearJugadorComponent implements OnInit{
     );
 }
 
+  /**
+   * @description Función encargada de crear un jugador.
+   * Obtiene los campos del formulario y si están validados se crea.
+   */
   crearJugador() {
     if (this.jugadorForm.valid) {
       const nombre = this.jugadorForm.get('nombre')!.value;
@@ -105,7 +121,16 @@ export class CrearJugadorComponent implements OnInit{
     }
     
   }
-
+  /**
+   * @description Función encargada de pasar al servicio los datos del formulario para insertar
+   * el nuevo jugador en la base de datos.
+   * @param nombre 
+   * @param puntos 
+   * @param division 
+   * @param usuario 
+   * @param password 
+   * @param imagen 
+   */
   guardarJugador(nombre: string, puntos: string, division: string, usuario:string, password:string,imagen:string) {
     let puntosInteger = parseInt(puntos);
     let divisionInteger = parseInt(division);

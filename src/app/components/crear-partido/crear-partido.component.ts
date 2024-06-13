@@ -44,7 +44,11 @@ export class CrearPartidoComponent implements OnInit{
     });
     this.validar_lenguage()
   }  
-
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validar_lenguage(){
     let lenguage = this.cookie_service.getCookie('language')
     if (lenguage =='spanish'|| lenguage=='english'){
@@ -53,7 +57,10 @@ export class CrearPartidoComponent implements OnInit{
       return null
     }
   }
-
+  /**
+   * @description Carga las parejas que hay en la división indicada en el formulario
+   * @param division 
+   */
   cargarParejas(division:number){
     this.serviciosJugadores.obtenerParejasDivision(division).subscribe(
       (parejas:Pareja[])=>{
@@ -61,6 +68,10 @@ export class CrearPartidoComponent implements OnInit{
       }
     )
   }
+  /**
+   * @description Función encargada de validar el formulario y guardar
+   * el partido en la base de datos.
+   */
   crearPartido() {
     if (this.partidoForm.valid) {
       let pareja1 = this.partidoForm.get('pareja1')!.value;

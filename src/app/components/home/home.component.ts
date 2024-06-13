@@ -17,6 +17,12 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.validarIdioma()
   }
+
+  /**
+   * @description Función encargada de devolver el idioma. Si no hay ninguno
+   * devuelve null
+   * @returns string or null
+   */
   validarIdioma(){
     let lenguage = this.cookieService.getCookie('language')
     if (lenguage=='spanish'||lenguage=='english'){
