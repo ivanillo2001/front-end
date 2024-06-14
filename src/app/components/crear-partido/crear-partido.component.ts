@@ -84,7 +84,7 @@ export class CrearPartidoComponent implements OnInit{
       
       this.serviciosJugadores.crearPartido(parseInt(pareja1),parseInt(pareja2),set1,set2,set3,parseInt(this.division)).subscribe({
         next:(data) => {
-          console.log('Partido creado con éxito:', data);
+          // console.log('Partido creado con éxito:', data);
           Swal.fire({
             icon: "success",
             title: "Partido creado exitosamente",

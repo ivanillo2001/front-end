@@ -66,7 +66,7 @@ export class EliminarJugadorComponent implements OnInit{
           }
         },
         error: (error) => {
-          console.error('Error al obtener jugador:', error);
+          // console.error('Error al obtener jugador:', error);
           alert('Hubo un error al obtener el jugador.');
         }
       });

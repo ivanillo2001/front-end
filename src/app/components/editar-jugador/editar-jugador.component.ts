@@ -116,7 +116,7 @@ export class EditarJugadorComponent implements OnInit{
           });
         },
         error: (error) => {
-          console.error('Error al editar jugador:', error);
+          // console.error('Error al editar jugador:', error);
           Swal.fire({
             icon: "error",
             title: "No se ha podido editar el jugador",

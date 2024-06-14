@@ -92,7 +92,7 @@ export class CrearJugadorComponent implements OnInit{
 
       this.servicioUsuarios.crearJugador(nombre, puntos, division,usuario,password,imagen).subscribe({
         next:(data) => {
-          console.log('Jugador creado con éxito:', data);
+          // console.log('Jugador creado con éxito:', data);
           Swal.fire({
             icon: "success",
             title: "Jugador creado exitosamente",
@@ -102,7 +102,7 @@ export class CrearJugadorComponent implements OnInit{
           this.jugadorForm.reset()
         },
         error:(error) => {
-          console.error('Error al crear jugador:', error);
+          // console.error('Error al crear jugador:', error);
           Swal.fire({
             icon: "error",
             title: "No se ha podido crear el jugador",
